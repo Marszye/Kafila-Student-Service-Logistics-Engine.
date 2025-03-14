@@ -1,0 +1,642 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Mar 13, 2025 at 03:59 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `peminjaman_hp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cashflow`
+--
+
+CREATE TABLE `cashflow` (
+  `id` int(11) NOT NULL,
+  `tanggal` datetime NOT NULL DEFAULT current_timestamp(),
+  `nama` varchar(100) DEFAULT NULL,
+  `kelas` varchar(50) DEFAULT NULL,
+  `nominal` int(11) NOT NULL,
+  `type` enum('in','out') NOT NULL,
+  `rincian` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cashflow`
+--
+
+INSERT INTO `cashflow` (`id`, `tanggal`, `nama`, `kelas`, `nominal`, `type`, `rincian`) VALUES
+(1, '2025-03-09 22:16:31', 'daaz', '11A', 50000, 'in', 'beli makan'),
+(2, '2025-03-09 22:17:28', 'Rizky', '11C', 100000, 'in', 'Sodaqoh'),
+(3, '2025-03-09 22:25:10', 'Syaiful Maarif', 'none', 10000, 'in', 'Sodaqoh'),
+(4, '2025-03-10 13:54:28', 'Syamil', '11A', 1000, 'in', 'sodaqoh'),
+(5, '2025-03-10 14:08:49', 'SAMI KHALIFAH', '8B', 0, 'in', 'Bayar Telpon'),
+(6, '2025-03-10 14:14:35', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(7, '2025-03-10 14:17:07', 'SAJID ADZWAZUL IZZAT', '8B', 1000, 'in', 'Bayar Telpon'),
+(8, '2025-03-10 14:25:16', 'ADRIAN CHALID', '8A', 1000, 'in', 'Bayar Telpon'),
+(9, '2025-03-10 14:30:23', 'MUHAMMAD RAFIF AZKA', '8A', 1000, 'in', 'Bayar Telpon'),
+(10, '2025-03-10 14:42:20', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(11, '2025-03-10 14:42:32', 'NABIL HAIDAR AL MAHDI', '8A', 1000, 'in', 'Bayar Telpon'),
+(12, '2025-03-10 15:51:01', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(13, '2025-03-10 15:52:03', 'MUHAMMAD RAZAN NABAWI', '8A', 1000, 'in', 'Bayar Telpon'),
+(14, '2025-03-10 15:52:19', 'NABIL HAIDAR AL MAHDI', '8A', 1000, 'in', 'Bayar Telpon'),
+(15, '2025-03-10 16:10:48', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(16, '2025-03-10 16:10:56', 'ARSYAD ZAKI WIRADHANA', '8B', 1000, 'in', 'Bayar Telpon'),
+(17, '2025-03-10 16:11:29', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(18, '2025-03-10 16:11:55', 'ANDI IMAM FATHANI ALIMUDDIN', '8B', 1000, 'in', 'Bayar Telpon'),
+(19, '2025-03-10 16:20:54', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(20, '2025-03-10 16:21:12', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(21, '2025-03-10 16:34:13', 'SAMI KHALIFAH', '8B', 1000, 'in', 'Bayar Telpon'),
+(22, '2025-03-11 16:35:02', 'ABDURRAHMAN ASQOLANI MARSHANT', '9A', 1000, 'in', 'Bayar Telpon'),
+(23, '2025-03-11 21:19:30', 'ABDULLAH HUSNI AZZAM', '9A', 1000, 'in', 'Bayar Telpon'),
+(24, '2025-03-12 21:41:06', 'ALI JALER SYUHADA', '10A', 1000, 'in', 'Bayar Telpon');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_history`
+--
+
+CREATE TABLE `chat_history` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_message` text NOT NULL,
+  `ai_response` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chat_history`
+--
+
+INSERT INTO `chat_history` (`id`, `user_id`, `user_message`, `ai_response`, `created_at`) VALUES
+(1, 1, 'halo', 'Sorry, I could not generate a response.', '2025-03-11 21:47:10'),
+(2, 1, 'halo', 'Sorry, I could not generate a response.', '2025-03-11 21:55:36'),
+(3, 1, 'tes', 'Sorry, I could not generate a response.', '2025-03-11 22:01:26'),
+(4, 1, 'kenapa', 'Sorry, I could not generate a response.', '2025-03-11 22:01:29'),
+(5, 1, 'halo', 'Sorry, I could not generate a response.', '2025-03-12 21:22:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hp_list`
+--
+
+CREATE TABLE `hp_list` (
+  `id` int(11) NOT NULL,
+  `hp` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hp_list`
+--
+
+INSERT INTO `hp_list` (`id`, `hp`) VALUES
+(4, 'Advan 2'),
+(5, 'Advan 4'),
+(6, 'Xiaomi'),
+(7, 'Redmi 1'),
+(8, 'Redmi 2'),
+(9, 'Redmi 3'),
+(10, 'Redmi 4'),
+(11, 'Redmi 5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `masukan_anon`
+--
+
+CREATE TABLE `masukan_anon` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) DEFAULT 'Anonim',
+  `pesan` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `masukan_anon`
+--
+
+INSERT INTO `masukan_anon` (`id`, `nama`, `pesan`, `created_at`) VALUES
+(1, 'Anonim', 'kalau bisa lebih berwarwarna', '2025-03-09 14:03:24'),
+(2, 'Anonim', 'what', '2025-03-09 14:04:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `peminjaman`
+--
+
+CREATE TABLE `peminjaman` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  `kelas` varchar(10) DEFAULT NULL,
+  `hp` varchar(50) DEFAULT NULL,
+  `waktu_pinjam` datetime DEFAULT NULL,
+  `waktu_kembali` datetime DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `bayar` int(11) DEFAULT NULL,
+  `method` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id`, `nama`, `kelas`, `hp`, `waktu_pinjam`, `waktu_kembali`, `status`, `bayar`, `method`) VALUES
+(1, 'AZHAR ZAIDAN AL RASYID', '7B', 'HP 01', '2025-02-15 08:57:28', NULL, 'Batal', 0, NULL),
+(2, 'AZZAM ALFAHRIZZY', '7B', 'HP 03', '2025-02-15 11:04:09', NULL, 'Batal', 0, NULL),
+(3, 'AGASTYA NARINDRA SATYA', '7A', 'HP 02', '2025-02-15 16:01:51', NULL, 'Batal', 0, NULL),
+(4, 'ABDULAH RAYAN ZAMAN', '', 'HP 01', '2025-02-16 14:26:57', NULL, 'Batal', 0, NULL),
+(5, 'AFIFURROHIM', '', 'HP 02', '2025-02-16 15:18:50', NULL, 'Batal', 0, NULL),
+(6, 'MUHAMMAD SYAMIL ALFARIZI', NULL, 'HP 01', '2025-02-20 14:13:30', NULL, 'Batal', NULL, NULL),
+(7, 'FATURROHMAN YULIARDI', NULL, 'HP 03', '2025-02-20 21:05:49', NULL, 'Batal', NULL, NULL),
+(8, 'MUHAMMAD SYAMIL ALFARIZI', NULL, 'HP 01', '2025-02-20 21:35:34', NULL, 'Batal', NULL, NULL),
+(11, 'John Doe', '10A', 'HP 01', '2025-02-27 21:28:19', NULL, 'Batal', NULL, NULL),
+(12, 'ABDULLAH ADZKIY ROBBANI', '10B', 'HP 01', '2025-03-02 14:55:45', '2025-03-02 14:55:59', 'Selesai', 0, 'cash'),
+(13, 'ABDULAH RAYAN ZAMAN', '12B', 'HP 01', '2025-03-02 14:56:15', '2025-03-02 14:56:44', 'Selesai', 0, 'cash'),
+(14, 'ABDULLAH ADZKIY ROBBANI', '10B', 'HP 02', '2025-03-02 16:13:50', NULL, 'Batal', NULL, NULL),
+(15, 'ABDULAH RAYAN ZAMAN', '12B', 'HP 01', '2025-03-02 16:15:34', '2025-03-02 16:48:38', 'Selesai', 4000, 'debt'),
+(16, 'ABDURRAKHMAN KHOIRUL FAIQIN FAJAR AL MUNAWWAR', '7A', 'HP 03', '2025-03-02 16:15:56', '2025-03-02 16:48:32', 'Selesai', 4000, 'cash'),
+(17, 'ABDUL HAFIZH', '12A', 'HP 02', '2025-03-02 17:02:56', '2025-03-02 17:03:01', 'Selesai', 0, 'cash'),
+(18, 'ABDUL HAFIZH', '12A', 'HP 02', '2025-03-02 17:03:16', '2025-03-06 14:58:00', 'Selesai', 1124000, 'debt'),
+(19, 'Admin', '12A', 'HP 01', '2025-03-02 17:42:29', '2025-03-02 17:42:29', 'Selesai', NULL, NULL),
+(20, 'Admin', '12A', 'HP 02', '2025-03-02 17:42:29', '2025-03-02 17:42:29', 'Selesai', NULL, NULL),
+(21, 'Admin', '12A', 'HP 03', '2025-03-02 17:42:29', '2025-03-02 17:42:29', 'Selesai', NULL, NULL),
+(22, 'SAMI KHALIFAH', '8B', 'HP 01', '2025-03-03 14:14:51', '2025-03-06 14:57:51', 'Selesai', 870000, 'cash'),
+(23, 'ABDULAH RAYAN ZAMAN', '12B', 'HP 02', '2025-03-07 14:00:29', '2025-03-08 14:12:40', 'Selesai', 288000, 'debt'),
+(24, 'FAGIAN AL FARIZQI', '7C', 'HP 01', '2025-03-08 14:12:59', '2025-03-09 20:48:18', 'Selesai', 364000, 'cash'),
+(25, 'AZHAR ZAIDAN AL RASYID', '7B', 'HP 02', '2025-03-08 15:56:12', NULL, 'Batal', NULL, NULL),
+(26, 'ABDUL HAFIZH', '12A', 'HP 02', '2025-03-09 14:02:20', '2025-03-09 20:47:52', 'Selesai', 78000, 'cash'),
+(27, 'ABDULAH RAYAN ZAMAN', '12B', 'HP 03', '2025-03-09 16:37:27', '2025-03-09 20:48:08', 'Selesai', 47000, 'cash'),
+(28, 'MUHAMMAD SYAMIL ALFARIZI', '11A', 'HP 02', '2025-03-09 20:48:42', '2025-03-10 13:49:36', 'Selesai', 201000, 'cash'),
+(29, 'SAMI KHALIFAH', '8B', 'Advan 4', '2025-03-10 14:08:49', '2025-03-10 14:08:55', 'Selesai', 0, 'cash'),
+(30, 'SAMI KHALIFAH', '8B', 'Xiaomi', '2025-03-10 14:14:35', '2025-03-10 14:14:46', 'Selesai', 0, 'cash'),
+(31, 'SAJID ADZWAZUL IZZAT', '8B', 'Redmi 2', '2025-03-10 14:17:07', '2025-03-10 14:24:32', 'Selesai', 0, 'cash'),
+(32, 'ADRIAN CHALID', '8A', 'Advan 4', '2025-03-10 14:25:16', '2025-03-10 14:26:04', 'Selesai', 0, 'cash'),
+(33, 'MUHAMMAD RAFIF AZKA', '8A', 'Redmi 1', '2025-03-10 14:30:23', '2025-03-10 14:43:24', 'Selesai', 0, 'cash'),
+(34, 'SAMI KHALIFAH', '8B', 'Redmi 3', '2025-03-10 14:42:20', '2025-03-10 14:54:16', 'Selesai', 0, 'cash'),
+(35, 'NABIL HAIDAR AL MAHDI', '8A', 'Redmi 5', '2025-03-10 14:42:32', '2025-03-10 15:46:58', 'Selesai', 10000, 'cash'),
+(36, 'SAMI KHALIFAH', '8B', 'Redmi 1', '2025-03-10 15:51:01', NULL, 'Batal', NULL, 'cash'),
+(37, 'MUHAMMAD RAZAN NABAWI', '8A', 'Redmi 2', '2025-03-10 15:52:03', '2025-03-10 15:58:50', 'Selesai', 0, 'cash'),
+(38, 'NABIL HAIDAR AL MAHDI', '8A', 'Redmi 5', '2025-03-10 15:52:19', '2025-03-10 15:59:08', 'Selesai', 0, 'cash'),
+(39, 'SAMI KHALIFAH', '8B', 'Advan 2', '2025-03-10 16:10:48', '2025-03-10 16:34:13', 'Selesai', 1000, 'cash'),
+(40, 'ARSYAD ZAKI WIRADHANA', '8B', 'Advan 4', '2025-03-10 16:10:56', NULL, 'Dipinjam', NULL, 'cash'),
+(41, 'SAMI KHALIFAH', '8B', 'Xiaomi', '2025-03-10 16:11:29', NULL, 'Batal', NULL, 'cash'),
+(42, 'ANDI IMAM FATHANI ALIMUDDIN', '8B', 'Redmi 1', '2025-03-10 16:11:55', NULL, 'Batal', NULL, NULL),
+(43, 'SAMI KHALIFAH', '8B', 'Redmi 3', '2025-03-10 16:20:54', NULL, 'Dipinjam', NULL, 'cash'),
+(44, 'SAMI KHALIFAH', '8B', 'Redmi 4', '2025-03-10 16:21:12', NULL, 'Dipinjam', NULL, 'cash'),
+(45, 'ABDURRAHMAN ASQOLANI MARSHANT', '9A', 'Redmi 5', '2025-03-11 16:35:02', '2025-03-11 16:36:23', 'Selesai', 1000, 'cash'),
+(46, 'ABDULLAH HUSNI AZZAM', '9A', 'Advan 2', '2025-03-11 21:19:30', NULL, 'Batal', NULL, NULL),
+(47, 'ALI JALER SYUHADA', '10A', 'Advan 2', '2025-03-12 21:41:06', NULL, 'Dipinjam', NULL, 'cash');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `santri`
+--
+
+CREATE TABLE `santri` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `kelas` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `santri`
+--
+
+INSERT INTO `santri` (`id`, `nama`, `kelas`) VALUES
+(1, '', ''),
+(4, 'nama', 'kelas'),
+(5, 'ABDURRAKHMAN KHOIRUL FAIQIN FAJAR AL MUNAWWAR', '7A'),
+(6, 'AGASTYA NARINDRA SATYA', '7A'),
+(7, 'AHMAD ARFIAN SWASTIKA', '7A'),
+(8, 'AHMAD JIBRIL SHABRI ZAPHYRE', '7A'),
+(9, 'AHMMAD ZAKY', '7A'),
+(10, 'HUDZAIFAH AL FAQIEH', '7A'),
+(11, 'ISLAM ABDULLAH', '7A'),
+(12, 'KAYYIS ASLAM HARITSAH', '7A'),
+(13, 'MUAMAHALOVA GHIBRAN EL AQIL', '7A'),
+(14, 'MUHAMMAD ALIM AL MADJID', '7A'),
+(15, 'MUHAMMAD ALLIF MUMTAZ', '7A'),
+(16, 'MUHAMMAD AUHADUZZAMAN EL ROHMAN', '7A'),
+(17, 'MUHAMMAD AWFIY YANTO', '7A'),
+(18, 'MUHAMMAD AZKA WARDHANA', '7A'),
+(19, 'MUHAMMAD HANIF', '7A'),
+(20, 'MUHAMMAD KHAIRUL IKHWAN', '7A'),
+(21, 'MUHAMMAD NAJMU TSAQIB', '7A'),
+(22, 'MUHAMMAD RAYYAN MUBARAK', '7A'),
+(23, 'MUHAMMAD RIZQY  FADILLAH', '7A'),
+(24, 'RAYHAN ARVA GHAISANI', '7A'),
+(25, 'RAYYAN ARKAN AVARA', '7A'),
+(26, 'RAZI FATIH FAWWAZ', '7A'),
+(27, 'REYHAN FARIS PRATAMA', '7A'),
+(28, 'ALVIAN MUSTOFA BISRI', '7B'),
+(29, 'ANDI AZKA RAHMAN', '7B'),
+(30, 'ANNADIF FATHI ILMISYAH', '7B'),
+(31, 'AZHAR ZAIDAN AL RASYID', '7B'),
+(32, 'AZZAM ALFAHRIZZY', '7B'),
+(33, 'AZZAM ZAFIR', '7B'),
+(34, 'DAFFIAN LUKMAN ZULKIFLI', '7B'),
+(35, 'FAHAD MUHAMAD ALAMUDI', '7B'),
+(36, 'FATTAH IHSAN AKBAR', '7B'),
+(37, 'FURQAN ATHOURRAHMAN', '7B'),
+(38, 'HANIF ABDURROSYID', '7B'),
+(39, 'MUHAMMAD FERLY NURTRIANANTA', '7B'),
+(40, 'MUHAMMAD UMAR ANDHIKA', '7B'),
+(41, 'NAUFAL ARIQ PUTRA PRADANA', '7B'),
+(42, 'RAFI FAEZYA ZAHID ABQARY', '7B'),
+(43, 'RAIHAN ILMI ZAIDAN', '7B'),
+(44, 'RASYHQUL ABID RAFIF AL KULANI', '7B'),
+(45, 'RIZIQ DJAFAR AYEDH', '7B'),
+(46, 'ROFIF ABDUR ROSYID', '7B'),
+(47, 'UMAR ABDUL AZIS SIREGAR', '7B'),
+(48, 'YUDHA MOHAMMAD FARIZI', '7B'),
+(49, 'ZAVIER AQEELA ABYAN', '7B'),
+(50, 'ARIEFIN ARSYAD FAWWAZI', '7C'),
+(51, 'ARKHAN AL GHIFARI', '7C'),
+(52, 'AZKA CHALIEFI DZIKRI', '7C'),
+(53, 'FAGIAN AL FARIZQI', '7C'),
+(54, 'MA\'RUF MURTADHO', '7C'),
+(55, 'MU\'AMMAR ATHARRAYHAN AL AYYUBI', '7C'),
+(56, 'MUHAMMAD ADRIAN GHAZALI', '7C'),
+(57, 'MUHAMMAD ARKAN AZHAR', '7C'),
+(58, 'MUHAMMAD AZHAR KHAQIQI', '7C'),
+(59, 'MUHAMMAD FAITH HULWAN', '7C'),
+(60, 'MUHAMMAD FATTAH ALMAQDISY', '7C'),
+(61, 'MUHAMMAD RASYA FABRIZIO', '7C'),
+(62, 'MUHAMMAD REYHAN ALI IRIANTO', '7C'),
+(63, 'MUHAMMAD YUSUF HAWARI', '7C'),
+(64, 'MUSASHI EL KHOIRY', '7C'),
+(65, 'QARIZH SALIM ELMUKHLAS', '7C'),
+(66, 'SYAHMI AIDAN TSANI', '7C'),
+(67, 'UMAR ABDULLOH SHOLIH', '7C'),
+(68, 'ZAKKI KHOIRUL AZZAM', '7C'),
+(69, 'ABDURRAHMAN ZAKY MAJID', '8A'),
+(70, 'ADRIAN CHALID', '8A'),
+(71, 'ALTAF IVANDER ZAHIR', '8A'),
+(72, 'FAIZ MARVEL ABRAR', '8A'),
+(73, 'FAKHRI EKA RAHARDJO', '8A'),
+(74, 'FARRAS ABIYYU FATAH', '8A'),
+(75, 'GHAZY AYATULLAH TSAQIF', '8A'),
+(76, 'HARITS ASSHIDIQ NASVAR', '8A'),
+(77, 'HUDZAIFAH FAQIH ABQORIYY', '8A'),
+(78, 'IHSAN MUHAMMAD HANIF', '8A'),
+(79, 'KEY ALDO HABILE FAUZ', '8A'),
+(80, 'MUHAMMAD AFWAN ZHAFAR SHODIK', '8A'),
+(81, 'MUHAMMAD ARKAN HALOMOAN NASUTION', '8A'),
+(82, 'MUHAMMAD AHSAN IBADURRAHMAN', '8A'),
+(83, 'MUHAMMAD AKHTARA PRIMA', '8A'),
+(84, 'MUHAMMAD AL FATHI', '8A'),
+(85, 'MUHAMMAD \'AZMI ALFAYYADH', '8A'),
+(86, 'MUHAMMAD HAFIZ AZZAM', '8A'),
+(87, 'MUHAMMAD RAFIF AZKA', '8A'),
+(88, 'MUHAMMAD RAZAN NABAWI', '8A'),
+(89, 'NABIL HAIDAR AL MAHDI', '8A'),
+(90, 'NADZIIF MUHAMMAD IQBAL', '8A'),
+(91, 'RAFFASHA AKHTAR GHANI', '8A'),
+(92, 'SADAD ZAKI', '8A'),
+(93, 'VARENTH VALENCIA ARKANANTHA SUTIMAN', '8A'),
+(94, 'ANDI IMAM FATHANI ALIMUDDIN', '8B'),
+(95, 'ARSYAD ZAKI WIRADHANA', '8B'),
+(96, 'ASYQAR ATHA FARAND KAHURIPAN', '8B'),
+(97, 'AYDIN KHALFANI RAFIF', '8B'),
+(99, 'DAMAR RAHMANTYO KESOWOSIDI', '8B'),
+(100, 'DZULFIKAR HAIDAR SAFARAZ', '8B'),
+(101, 'HASBI KHAIRY HIDAYAT', '8B'),
+(102, 'KEYSAN AHMAD RAIHAN', '8B'),
+(103, 'MUHAMAD RAFA', '8B'),
+(104, 'MUHAMMAD ARKAAN KHALIFA', '8B'),
+(105, 'MUHAMMAD RADYAN NABAWI', '8B'),
+(106, 'MUHAMMAD SULTAN ALKAUTSAR', '8B'),
+(107, 'RAFFASYA FAUZAN KAMIL', '8B'),
+(108, 'RAIHAN FATIH AR ROYYAN', '8B'),
+(109, 'RASHDAN SHAKEEL ALFAREZEL', '8B'),
+(110, 'RASYA AQILLA ILHAM SINGGIH', '8B'),
+(111, 'REINER JUSUF ARIESTHA PUTRA', '8B'),
+(112, 'RIFAT HUSAIN NUGROHO', '8B'),
+(113, 'SAAJID AMMAAR RIZQI', '8B'),
+(114, 'SAJID ADZWAZUL IZZAT', '8B'),
+(115, 'SAMI KHALIFAH', '8B'),
+(116, 'YAZID IMAN', '8B'),
+(117, 'ZAKY SALEH ALI NAHDI', '8B'),
+(118, 'ZUHAIR SHADIQ ALI', '8B'),
+(119, 'ARGHATHIA CITTA DEWANGGA', '8C'),
+(120, 'ATHAYA ALI FIRAS', '8C'),
+(121, 'AYMAN YUSUF HABIBE', '8C'),
+(122, 'AZKA HARITS AL-MAGHRIBY', '8C'),
+(123, 'EFIM AHMAD AZHARI', '8C'),
+(124, 'FAIRUZ IZDIHAR QURUNUL BAHRI', '8C'),
+(125, 'HUMMAM ZAYDAN', '8C'),
+(126, 'IDRIS ASY SYAFI\'I', '8C'),
+(127, 'IRSYAD RAFI WIKONO', '8C'),
+(128, 'MUH. LUTHFIE SAKHI ZAIDAN', '8C'),
+(129, 'MUHAMAD AZZAM ABDULHAFIZH', '8C'),
+(130, 'MUHAMMAD FATIH FARHAT', '8C'),
+(131, 'MUHAMMAD HUMAM AL-FARUQ', '8C'),
+(132, 'MUHAMMAD RIFFAT ZUHAIR', '8C'),
+(133, 'MUHAMAD RAYHAN ALGOJALI', '8C'),
+(134, 'MUSYAFFA URWAH ZAIDAN', '8C'),
+(135, 'NATHAN DEVYN RAHADIST', '8C'),
+(136, 'RIZKY ABQORI ROBBANI', '8C'),
+(137, 'ZAKI AMANULLAH AULIZAN', '8C'),
+(138, 'ABDULLAH AZZAM', '9A'),
+(139, 'ABDULLAH HUSNI AZZAM', '9A'),
+(140, 'ABDURRAHMAN ASQOLANI MARSHANT', '9A'),
+(141, 'AHMAD YASSER HASIBUAN', '9A'),
+(142, 'ASLAM BIMA RISYANDA', '9A'),
+(143, 'DIPATI AHMAD ALKAHFI', '9A'),
+(144, 'FAIZ MUHAMAD ALAMUDI', '9A'),
+(145, 'FIRZA ATHALLAH EL-FAJR', '9A'),
+(146, 'HABLI RAHMAN NASUTION', '9A'),
+(147, 'IBRAHIM GHAZI PRASETYA', '9A'),
+(148, 'KENNETH CESSARIO JULY KRISTIANTO', '9A'),
+(149, 'M. FARIS HILMI WILDANI SIRAIT', '9A'),
+(150, 'MASAHIRO HADZIQ SWISSEDY', '9A'),
+(151, 'MUHAMMAD AKDIA ALI KHAWARIZMI', '9A'),
+(152, 'MUHAMMAD GHIFARI', '9A'),
+(153, 'MUHAMMAD HAFIZH NABIL', '9A'),
+(154, 'MUHAMMAD HARUN NURULHAQQ', '9A'),
+(155, 'MUHAMMAD IKHSAN AL KHUDRI', '9A'),
+(156, 'MUHAMMAD LUTHFI HARTOYO', '9A'),
+(157, 'MUHAMMAD NABIL SYA\'BANI', '9A'),
+(158, 'MUHAMMAD RIZKI DZIKRULLAH', '9A'),
+(159, 'NAUFALDI ARRAHMAN', '9A'),
+(160, 'QOBUS SHOBRI HALIM', '9A'),
+(161, 'RAJATA AHMAD FARISI', '9A'),
+(162, 'RAKHI ANUGRAH PUTRA', '9A'),
+(163, 'RESKY ALBIRRU', '9A'),
+(164, 'SALMAN AL FARISI', '9A'),
+(165, 'SHADDAM MAULANA HUSSEIN', '9A'),
+(166, 'YAZID ALFAIZ', '9A'),
+(167, 'ZUFAR', '9A'),
+(168, 'ACHMAD RIZKY MANDALA PUTRA', '10A'),
+(169, 'AFKAR KAMIL AS SISIY', '10A'),
+(170, 'AHMAD AL BANI', '10A'),
+(171, 'ALI AKBAR', '10A'),
+(172, 'ALI JALER SYUHADA', '10A'),
+(173, 'ARGANINAGRA ARKAAN ADMADATU', '10A'),
+(174, 'FATHAN NURROHMAN', '10A'),
+(175, 'FAUZAN AHNAF', '10A'),
+(176, 'FIKRI ALMUFTI', '10A'),
+(177, 'HAIKAL PASHA', '10A'),
+(178, 'IBRAHIMOVIC ARRUHUL JADID', '10A'),
+(179, 'MUHAMMAD FAIQ RAMADHAN', '10A'),
+(180, 'MUHAMMAD FAIZ RIFQI FAUZI', '10A'),
+(181, 'MUHAMMAD KHAIRY AZZAM', '10A'),
+(182, 'MUHAMMAD LUTHFI DETY TARIGAN', '10A'),
+(183, 'MUHAMMAD RIZKY FARAND BYAKTA', '10A'),
+(184, 'MUHAMMAD THAQIF NUR HIDAYAT', '10A'),
+(185, 'SULTAN RAYHAN AMADES', '10A'),
+(186, 'ABDULLAH ADZKIY ROBBANI', '10B'),
+(187, 'ABDULLAH AFFAN', '10B'),
+(188, 'FAIZ IRHAB', '10B'),
+(189, 'HILMI AMMAR IZDIHAR', '10B'),
+(190, 'KEMAL FEBRILLIANT DELVI', '10B'),
+(191, 'M. HANIF SURYA', '10B'),
+(192, 'MUHAMMAD ASADULLOH EL - ARIEFA', '10B'),
+(193, 'MUHAMMAD DAFFA\'UL HAQQI', '10B'),
+(194, 'MUHAMMAD FATIH AL FARUQ', '10B'),
+(195, 'MUHAMMAD RAFA ALFARGHANI', '10B'),
+(196, 'RAFA ZAHID ABQORY', '10B'),
+(197, 'MUHAMMAD SHALAHUDDIN FATIH AL FATHIR', '10B'),
+(198, 'MUHAMMAD THORIQ AL FATAH', '10B'),
+(199, 'RAFA AQIL PRASETIYO', '10B'),
+(200, 'RASYAD ABDUL AZIZ ZAKY BASALAMAH', '10B'),
+(201, 'RAYHAN ADITYA NUGRAHA', '10B'),
+(202, 'TAHFIDZUL IHSAN', '10B'),
+(203, 'ZAID IBROHIM', '10B'),
+(204, 'ZAIDAN FAYYADH MUSYARRAF', '10B'),
+(205, 'AHMAD HAFIZH', '11A'),
+(206, 'AMMAR AZZAMMUL MUJAHID', '11A'),
+(207, 'AZKA ZUHAIRI AL RASYID', '11A'),
+(208, 'BHARRA FATHI ALAYMAN', '11A'),
+(209, 'DZAKY MUHAMMAD RAMADHAN', '11A'),
+(210, 'HAFIDH FAHMI ABDILLAH', '11A'),
+(211, 'HAIDAR ALTHAF TRENGGONO', '11A'),
+(212, 'HAMMAAM AL FATTA ARYAWAN', '11A'),
+(213, 'KENZIE MUHAMMAD REFINO', '11A'),
+(214, 'MAURIKO ALFATHQI RASYAD', '11A'),
+(215, 'MOHAMAD DIRGA PRATAMA', '11A'),
+(216, 'MUHAMMAD DAFFA ATHAYA AKHTAR ZAHRON', '11A'),
+(217, 'MUHAMMAD DAFFA FAHRI RAJASA', '11A'),
+(218, 'MUHAMMAD FARHAT AYYASI', '11A'),
+(219, 'MUHAMMAD FARROS ZAIN ABDULLAH', '11A'),
+(220, 'MUHAMMAD FATHIR ZAIN PAPILAYA', '11A'),
+(221, 'MUHAMMAD HAFIDZ AKBAR', '11A'),
+(222, 'MUHAMMAD RAISUL FAUZAN SYAHIDAN', '11A'),
+(223, 'MUHAMMAD RIFQY NAVENDRA', '11A'),
+(224, 'MUHAMMAD SYAMIL ALFARIZI', '11A'),
+(225, 'MUHAMMAD ZAKI HASAN', '11A'),
+(226, 'MUHAMMAD ZAKY HAMZAH', '11A'),
+(227, 'NAHDAN NAFIS ALRAFDA', '11A'),
+(228, 'NAUFAL AFRAKA RAMADHAN', '11A'),
+(229, 'RAFIF ATHAR HENDRAWAN', '11A'),
+(230, 'RAKA PRAMASURYA ZUHRI', '11A'),
+(231, 'RIFQY ATHAR HENDRAWAN', '11A'),
+(232, 'SUHAIL HAMDANI', '11A'),
+(233, 'WAHYU MUHAMMAD IBRAHIM', '11A'),
+(234, 'DAFIN ILMAN RASYAD', '11B'),
+(235, 'DARIS ATQIA ', '11B'),
+(236, 'FATURROHMAN YULIARDI', '11B'),
+(237, 'JAMSYID M ZIDANE', '11B'),
+(238, 'MUHAMMAD AL KAUTSAR', '11B'),
+(239, 'MUHAMMAD ZUHAL SHIDQI', '11B'),
+(240, 'RAFIF RAZIQIN HIDAYAT', '11B'),
+(241, 'RIZKY DWI SEPTIANDRI', '11B'),
+(242, 'TEUKU MUHAMMAD KINZA', '11B'),
+(243, 'AFIFURROHIM', '11C'),
+(244, 'DZAKY FADHILAH NUR RAHMAN', '11C'),
+(245, 'FAHMI ULIL WAFA', '11C'),
+(246, 'IMAM FATHIN AL ATHA', '11C'),
+(247, 'M. YUNANDA IBNU JAMIL', '11C'),
+(248, 'MUHAMMAD NABIEL RAHARDIAN', '11C'),
+(249, 'MUHAMMAD RIZKY NUR RAMADHAN', '11C'),
+(250, 'MUHAMMAD ZAKY', '11C'),
+(251, 'NUFAIL ISYA ROMADHON', '11C'),
+(252, 'SULTHAN FARUQ EL-FACHRY THOYIB', '11C'),
+(253, 'ABDULAH RAYAN ZAMAN', '12B'),
+(254, 'AKMAL ABHINAYA WIRATAMA', '12B'),
+(255, 'ALIF SYABAB ROBBANI', '12B'),
+(256, 'AZRIL ALAMSYAH', '12B'),
+(257, 'DIMAS BAGASPATI PUTRABIROWO', '12B'),
+(258, 'IKHWAN HANIF', '12B'),
+(259, 'MUHAMMAD ADITYA RIZKY RAMADHAN', '12B'),
+(260, 'MUHAMMAD DHIYAA ATHAR PRAWIRA', '12B'),
+(261, 'MUHAMMAD MALIK HAKIM', '12B'),
+(262, 'MUHAMMAD NADHIF FADHLULLAH', '12B'),
+(263, 'MUKHAMMAD MUZAKKI ROBBY', '12B'),
+(264, 'ADZKIYA AULA AL-ISLAMY', '12C'),
+(265, 'FADLY ABDURRAHMAN HARDJONO', '12C'),
+(266, 'HABIBURROHMAN AL FARISY', '12C'),
+(267, 'M. ATTABIQ LUTHFI', '12C'),
+(268, 'MUHAMMAD DITKA FAREZI GANI', '12C'),
+(269, 'MUHAMMAD UMAIR HANIF HADORI MUSLIM', '12C'),
+(270, 'QILAN MUHAMMAD FAZA', '12C'),
+(271, 'RIYADH IKHSAN AL GHAZY', '12C'),
+(272, 'UMAR ALMUJADDID', '12C'),
+(274, 'ABDUL HAFIZH', '12A'),
+(275, 'ABDULLAH ZIAULHAQ', '12A'),
+(276, 'AHMAD HAFIZ PRASETYA', '12A'),
+(277, 'AHMAD ZAIDAN ALFARISI', '12A'),
+(278, 'AL FATH LUCANO DE LAKSA ARTA', '12A'),
+(279, 'AYYUB MUHAMMAD', '12A'),
+(280, 'AZHAR ZAIDAN', '12A'),
+(281, 'AZZAM ZAWAWI AL RASYID', '12A'),
+(282, 'DANISH FAEYZA RUSMAWAN', '12A'),
+(283, 'FAHRI ASYKAR ABDILLAH', '12A'),
+(284, 'KEVIN GERRAD KRISTIJANTO PURWONO', '12A'),
+(285, 'M. FAIZ SYAHRUR RAMADHAN', '12A'),
+(286, 'MUHAMMAD ATHA ASHSHAFA HARYOWIDJOJO', '12A'),
+(287, 'MUHAMMAD DAANISH FARIZQIE', '12A'),
+(288, 'MUHAMMAD GHAZY BALTHAZAR', '12A'),
+(289, 'MUHAMMAD HABIBI SURYA', '12A'),
+(290, 'MUHAMMAD KHALIFAH ALIYY', '12A'),
+(291, 'MUHAMMAD NICKOLAS GASTIADIRRIJAL', '12A'),
+(292, 'MUHAMMAD SALMAN IBADURAHMAN  >_<', '12A'),
+(293, 'MUHAMMAD UMAR ABISALI', '12A'),
+(294, 'MUHAMMAD ZAIDAN BAEHAKI', '12A'),
+(295, 'NAZLI ALWA RAUSHAN', '12A'),
+(296, 'RINDRA MUHAMMAD ALIF', '12A'),
+(297, 'SYAFIQ SYAUGI SYAWIE', '12A'),
+(298, 'TITAN SPARTA ABDULLAH', '12A'),
+(299, 'TSALIS DZAKY RAZAN ABIDIN', '12A'),
+(300, 'YASYA ANANTA', '12A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
+(1, 'ghozy', '$2y$10$k2qrFgkXk.uBtJ48QjI.tet7C9SR0.Gcs7iOpbja3XX/HR.362ZTi', '2025-03-09 14:55:38'),
+(2, 'raka', '$2y$10$RDSe4ydwtbF//UlF0lRI1uDGlbSc4OvqDlhe3Ppm40w1tz/tSgFRa', '2025-03-11 16:04:07');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cashflow`
+--
+ALTER TABLE `cashflow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chat_history`
+--
+ALTER TABLE `chat_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hp_list`
+--
+ALTER TABLE `hp_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `masukan_anon`
+--
+ALTER TABLE `masukan_anon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `santri`
+--
+ALTER TABLE `santri`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nama` (`nama`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cashflow`
+--
+ALTER TABLE `cashflow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `chat_history`
+--
+ALTER TABLE `chat_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `hp_list`
+--
+ALTER TABLE `hp_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `masukan_anon`
+--
+ALTER TABLE `masukan_anon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `peminjaman`
+--
+ALTER TABLE `peminjaman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `santri`
+--
+ALTER TABLE `santri`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
