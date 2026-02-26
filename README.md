@@ -17,12 +17,15 @@ To meet international security standards for educational institutions, this proj
 2. **Zero-Latency Data Integrity:** Optimized for internal server performance to ensure real-time logging without external internet delays.
 3. **Role-Based Access Control (RBAC):** Strict permission layers to ensure only authorized personnel can access sensitive student financial data.
 
-## 🛠️ Tech Stack
-- **Framework:** Laravel (PHP 8.1)
-- **Database:** MySQL (Optimized for high-frequency logging)
-- **Frontend:** Responsive UI with Tailwind CSS / Bootstrap
-- **Logic:** Custom Service Lifecycle Management
-
+## 🛠️ Tech Stack & Architecture
+- **Language:** Native PHP 8.x
+- **Database Driver:** PDO (PHP Data Objects) for secure, prepared SQL statements.
+- **Frontend:** Tailwind CSS & Bootstrap 5 for responsive administrative UI.
+- **Key Logic:**
+  - **Dynamic Billing Engine:** Scripted in `history.php` to calculate real-time costs based on time blocks (e.g., Rp 1.000 for first 15 mins, subsequent 5-min increments).
+  - **Data Management:** CRUD operations for managing device inventories and student interaction logs.
+  - **State Management:** Utilizing PHP Sessions for flash messages and transaction status.
+  
 ## 📂 Installation (For Internal Staff)
 1. Clone the repository to the local server.
 2. Run `composer install` & `npm install`.
